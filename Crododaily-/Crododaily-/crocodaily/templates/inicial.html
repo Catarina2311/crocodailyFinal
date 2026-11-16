@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrocoDaily - Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicial.css') }}">
+</head>
+<body>
+
+    <div class="login-box">
+
+        <h1>CrocoDaily</h1>
+
+        <form action="{{ url_for('login') }}" method="POST">
+
+            <input
+                type="text"
+                name="usuario"
+                placeholder="Usuário"
+                required>
+
+            <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                required>
+
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        {% if erro %}
+            <p>{{ erro }}</p>
+        {% endif %}
+
+        <div class="criar">
+             <a href="{{ url_for('cadastro') }}" class="contaC">Criar conta</a>
+        </div>
+       
+
+    </div>
+
+</body>
+</html>

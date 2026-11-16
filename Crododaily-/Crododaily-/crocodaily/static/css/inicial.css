@@ -1,0 +1,73 @@
+body{
+    background-color:  #c1e7c1;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box{
+    background-color: rgba(255,255,255,0.2);
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(32, 144, 45);
+    margin-bottom: 25px;
+    font-size: 45px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+button{
+    background-color: rgb(255, 160, 180);
+    color: rgb(9, 45, 9);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+button:hover{
+    background-color: rgb(201, 135, 149);
+}
+
+.contaC{
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    gap: 20px;
+    width: 100%;
+}
+
+.criar:hover{
+    background-color: rgb(201, 135, 149);
+    color:  rgb(0, 0, 0);
+ 
+
+}
+
+.criar{
+    background-color: rgb(255, 160, 180);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 8px;
+
+}

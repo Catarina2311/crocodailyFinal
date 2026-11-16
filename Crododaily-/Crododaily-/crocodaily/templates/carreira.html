@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/carreira.css') }}">
+    <title>Área Carreira</title>
+</head>
+<body>
+
+    <nav>
+        <a href="{{url_for('home')}}">Home</a>
+        <a href="{{url_for('social') }}">Social</a>
+        <a href="{{url_for('geral')}}">Geral</a>
+       
+    </nav>
+
+
+    <h1>Área Carreira</h1>
+
+    <h2>Nova Avaliação</h2>
+
+    <form action="{{ url_for('carreira') }}" method="POST">
+        <label for="avaliacao">Avalie sua área carreira:</label>
+
+        <select name="avaliacao" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    <h2>Avaliações Cadastradas</h2>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Avaliação</th>
+            <th>Atualizar</th>
+            <th>Excluir</th>
+        </tr>
+
+        {% for carreira in dados %}
+        <tr>
+            <td>{{ carreira[0] }}</td>
+            <td>{{ carreira[1] }}</td>
+
+            <td>
+                <form action="/editar/{{ carreira[0] }}" method="POST">
+                    <select name="avaliacao">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <button type="submit">
+                        Atualizar
+                    </button>
+                </form>
+            </td>
+
+            <td>
+                <a href="/deletar/{{ carreira[0] }}">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    
+
+
+<h2 class="graficoh">Gráfico de Avaliações da Área Carreira</h2>
+
+<div class="grafico">
+    <canvas id="graficoPizza"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const avaliacoes = {{ dados | map(attribute=1) | list | tojson }};
+
+    const notas = [1, 2, 3, 4, 5];
+
+    const quantidades = notas.map(nota => {
+        return avaliacoes.filter(
+            avaliacao => Number(avaliacao) === nota
+        ).length;
+    });
+
+    new Chart(document.getElementById("graficoPizza"), {
+        type: "pie",
+
+        data: {
+            labels: [
+                "Nota 1",
+                "Nota 2",
+                "Nota 3",
+                "Nota 4",
+                "Nota 5"
+            ],
+
+            datasets: [{
+                data: quantidades,
+
+                backgroundColor: [
+                    "#ef4444",
+                    "#f97316",
+                    "#eab308",
+                    "#3b82f6",
+                    "#22c55e"
+                ]
+            }]
+        },
+
+        options: {
+            responsive: true,
+
+            plugins: {
+                legend: {
+                    position: "bottom"
+                },
+
+                title: {
+                    display: true,
+                    text: "Distribuição das avaliações"
+                }
+            }
+        }
+    });
+</script>
+
+
+
+</body>
+</html>

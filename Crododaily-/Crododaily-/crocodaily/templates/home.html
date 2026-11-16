@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrocoDaily - Home</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+
+    <h1>Bem-vindo ao CrocoDaily, {{ usuario }}!</h1>
+
+    <h2>Escolha uma área:</h2>
+
+    <div>
+        <div class="geral">
+            <a href="{{ url_for('geral') }}">Geral</a>
+        </div>
+        
+
+        <div class="carreira">
+             <a href="{{ url_for('carreira') }}">Carreira</a>
+        </div>
+       
+        <div class="social">
+            <a href="{{ url_for('social') }}">Social</a>
+        </div>
+        
+    </div>
+
+    <a href="{{ url_for('logout') }}">Sair</a>
+
+</body>
+</html>

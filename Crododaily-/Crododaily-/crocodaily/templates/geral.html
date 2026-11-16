@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geral</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/geral.css') }}">
+</head>
+
+<body>
+    
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{url_for('carreira')}}" class="link">Carreira</a>
+        <a href="{{url_for('social')}}" class="link">Social</a>
+    </nav>
+   
+
+    <div>
+
+        <form action="{{url_for('geral')}}" method="POST">
+
+            <label for="descricao">
+                Geral
+            </label>
+
+            <input
+                type="text"
+                name="descricao"
+                id="descricao"
+                placeholder="Adicione um relato">
+
+            <button type="submit">
+                Salvar
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
